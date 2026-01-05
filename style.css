@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  min-height: 100vh;
+}
+
+header {
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.2rem;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 15px;
+  justify-content: center;
+  background: rgba(255,255,255,0.08);
+}
+
+.controls input, .controls select, .controls button {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+}
+
+.controls input, .controls select {
+  min-width: 180px;
+}
+
+.controls button {
+  background: #00c6ff;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.controls button:hover {
+  background: #00f2fe;
+}
+
+.table-container {
+  padding: 20px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  color: #000;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background: #2c5364;
+  color: #fff;
+  position: sticky;
+  top: 0;
+}
+
+tr:hover {
+  background: #f2f2f2;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 15px;
+}
+
+.pagination button {
+  padding: 8px 15px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: #00c6ff;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
