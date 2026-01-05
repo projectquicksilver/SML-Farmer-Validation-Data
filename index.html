@@ -20,7 +20,6 @@
       --success: #10b981;
       --warning: #f59e0b;
       --danger: #ef4444;
-      --info: #06b6d4;
       --bg-main: #fafbff;
       --bg-card: #ffffff;
       --text-primary: #0f172a;
@@ -137,31 +136,9 @@
       border: 1px solid var(--border);
     }
 
-    .control-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-
-    .control-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--text-primary);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .control-title svg {
-      width: 20px;
-      height: 20px;
-      color: var(--primary);
-    }
-
     .control-row {
       display: grid;
-      grid-template-columns: 2fr 1fr auto;
+      grid-template-columns: 2fr 1fr 1fr auto auto;
       gap: 12px;
       margin-bottom: 16px;
     }
@@ -254,161 +231,35 @@
       box-shadow: var(--shadow-lg);
     }
 
-    .btn-info {
-      background: linear-gradient(135deg, var(--info), #22d3ee);
-      color: white;
-      box-shadow: var(--shadow-md);
-    }
-
-    .btn-info:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    /* Advanced Filters Section */
-    .advanced-filters {
-      margin-top: 20px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
-    }
-
-    .filter-groups {
+    /* Quick Filters */
+    .quick-filters {
       display: flex;
-      flex-direction: column;
-      gap: 12px;
+      gap: 8px;
+      flex-wrap: wrap;
     }
 
-    .filter-rule {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1.5fr auto;
-      gap: 12px;
-      padding: 16px;
+    .filter-chip {
+      padding: 8px 16px;
       background: var(--bg-main);
-      border-radius: 12px;
       border: 2px solid var(--border);
-      animation: slideIn 0.3s ease;
-    }
-
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .filter-rule select,
-    .filter-rule input {
-      padding: 10px 12px;
-      border: 2px solid var(--border);
-      border-radius: 8px;
-      font-size: 14px;
-      background: white;
-      color: var(--text-primary);
-      font-weight: 500;
-    }
-
-    .filter-rule select:focus,
-    .filter-rule input:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(99,102,241,0.1);
-    }
-
-    .btn-icon {
-      width: 36px;
-      height: 36px;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 8px;
-      border: 2px solid var(--border);
-      background: white;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
       cursor: pointer;
       transition: all 0.2s ease;
     }
 
-    .btn-icon svg {
-      width: 18px;
-      height: 18px;
-      color: var(--text-secondary);
-    }
-
-    .btn-icon:hover {
-      border-color: var(--danger);
-      background: rgba(239, 68, 68, 0.05);
-    }
-
-    .btn-icon:hover svg {
-      color: var(--danger);
-    }
-
-    .filter-actions {
-      display: flex;
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .active-filters {
-      margin-top: 16px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .filter-tag {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(236,72,153,0.1));
-      border: 2px solid rgba(99,102,241,0.2);
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 600;
+    .filter-chip:hover {
+      border-color: var(--primary);
       color: var(--primary);
-      animation: slideIn 0.3s ease;
+      background: rgba(99,102,241,0.05);
     }
 
-    .filter-tag svg {
-      width: 16px;
-      height: 16px;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-
-    .filter-tag svg:hover {
-      transform: rotate(90deg);
-      color: var(--danger);
-    }
-
-    /* Sort Controls */
-    .sort-controls {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      padding: 16px;
-      background: var(--bg-main);
-      border-radius: 12px;
-      margin-bottom: 16px;
-    }
-
-    .sort-label {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-secondary);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .sort-label svg {
-      width: 16px;
-      height: 16px;
+    .filter-chip.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
     }
 
     /* Table Card */
@@ -440,6 +291,34 @@
       gap: 8px;
     }
 
+    .view-btn {
+      width: 36px;
+      height: 36px;
+      border: 2px solid var(--border);
+      background: white;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .view-btn svg {
+      width: 18px;
+      height: 18px;
+      color: var(--text-muted);
+    }
+
+    .view-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .view-btn.active svg {
+      color: white;
+    }
+
     /* Table */
     .table-container {
       overflow-x: auto;
@@ -469,33 +348,6 @@
       letter-spacing: 0.5px;
       border-bottom: 2px solid var(--border);
       background: var(--bg-main);
-      cursor: pointer;
-      user-select: none;
-      position: relative;
-    }
-
-    th:hover {
-      background: rgba(99,102,241,0.05);
-    }
-
-    th.sortable::after {
-      content: '⇅';
-      position: absolute;
-      right: 8px;
-      opacity: 0.3;
-      font-size: 14px;
-    }
-
-    th.sort-asc::after {
-      content: '↑';
-      opacity: 1;
-      color: var(--primary);
-    }
-
-    th.sort-desc::after {
-      content: '↓';
-      opacity: 1;
-      color: var(--primary);
     }
 
     td {
@@ -618,9 +470,6 @@
       .control-row {
         grid-template-columns: 1fr;
       }
-      .filter-rule {
-        grid-template-columns: 1fr;
-      }
     }
 
     @media (max-width: 768px) {
@@ -675,22 +524,8 @@
   
   <!-- Control Panel -->
   <div class="control-panel">
-    <div class="control-header">
-      <div class="control-title">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-        </svg>
-        Quick Search & Filters
-      </div>
-      <button class="btn btn-info" onclick="toggleAdvancedFilters()">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-        </svg>
-        Advanced Filters
-      </button>
-    </div>
-
     <div class="control-row">
+      
       <div class="input-group">
         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -698,73 +533,53 @@
         <input type="text" id="searchInput" placeholder="Search across all columns..." />
       </div>
 
-      <button class="btn btn-secondary" onclick="resetAllFilters()">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-        </svg>
-        Reset All
-      </button>
-
-      <button class="btn btn-success" onclick="downloadCSV()">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-        </svg>
-        Export CSV
-      </button>
-    </div>
-
-    <!-- Active Filters Display -->
-    <div id="activeFiltersContainer" class="active-filters"></div>
-
-    <!-- Advanced Filters -->
-    <div id="advancedFilters" class="advanced-filters" style="display: none;">
-      <div class="control-title" style="margin-bottom: 16px;">
+      <div class="input-group">
         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
         </svg>
-        Advanced Filter Rules
+        <select id="columnFilter">
+          <option value="">Select Column</option>
+        </select>
       </div>
 
-      <div id="filterRulesContainer" class="filter-groups"></div>
-
-      <div class="filter-actions">
-        <button class="btn btn-secondary" onclick="addFilterRule()">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-          </svg>
-          Add Filter Rule
-        </button>
-        <button class="btn btn-primary" onclick="applyAdvancedFilters()">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-          </svg>
-          Apply Filters
-        </button>
-      </div>
-    </div>
-
-    <!-- Sort Controls -->
-    <div class="sort-controls">
-      <span class="sort-label">
+      <div class="input-group">
         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
         </svg>
-        Sort by:
-      </span>
-      <select id="sortColumn" onchange="applySorting()">
-        <option value="">Select Column</option>
-      </select>
-      <select id="sortOrder" onchange="applySorting()">
-        <option value="asc">Ascending</option>
-        <option value="desc">Descending</option>
-      </select>
+        <input type="text" id="filterValue" placeholder="Filter value..." />
+      </div>
+
+      <button class="btn btn-primary" onclick="applyFilter()">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        Apply
+      </button>
+
+      <button class="btn btn-secondary" onclick="resetFilter()">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+        </svg>
+        Reset
+      </button>
+
     </div>
+
+    <div class="quick-filters" id="quickFilters"></div>
   </div>
 
   <!-- Table Card -->
   <div class="table-card">
     <div class="table-header">
       <div class="table-title">Data Explorer</div>
+      <div class="view-options">
+        <button class="btn btn-success" onclick="downloadCSV()">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          Export CSV
+        </button>
+      </div>
     </div>
 
     <div class="table-container">
@@ -809,16 +624,13 @@ let filteredData = [];
 let headers = [];
 let currentPage = 1;
 const rowsPerPage = 15;
-let filterRules = [];
-let sortColumn = '';
-let sortOrder = 'asc';
 
 // Fetch and load CSV
 fetch(CSV_URL)
   .then(res => res.text())
   .then(text => {
     parseCSV(text);
-    initializeUI();
+    initFilterOptions();
     renderTable();
     updateStats();
     document.getElementById('loadingState').style.display = 'none';
@@ -846,238 +658,14 @@ function parseCSV(text) {
   filteredData = [...rawData];
 }
 
-function initializeUI() {
-  // Initialize sort dropdown
-  const sortSelect = document.getElementById("sortColumn");
+function initFilterOptions() {
+  const select = document.getElementById("columnFilter");
   headers.forEach(h => {
     const option = document.createElement("option");
     option.value = h;
     option.textContent = h;
-    sortSelect.appendChild(option);
+    select.appendChild(option);
   });
-
-  // Add first filter rule by default
-  addFilterRule();
-}
-
-function toggleAdvancedFilters() {
-  const advFilters = document.getElementById('advancedFilters');
-  if (advFilters.style.display === 'none') {
-    advFilters.style.display = 'block';
-  } else {
-    advFilters.style.display = 'none';
-  }
-}
-
-function addFilterRule() {
-  const container = document.getElementById('filterRulesContainer');
-  const ruleId = Date.now();
-  
-  const ruleDiv = document.createElement('div');
-  ruleDiv.className = 'filter-rule';
-  ruleDiv.id = `rule-${ruleId}`;
-  
-  const columnSelect = document.createElement('select');
-  columnSelect.className = 'rule-column';
-  const defaultOption = document.createElement('option');
-  defaultOption.value = '';
-  defaultOption.textContent = 'Select Column';
-  columnSelect.appendChild(defaultOption);
-  
-  headers.forEach(h => {
-    const option = document.createElement('option');
-    option.value = h;
-    option.textContent = h;
-    columnSelect.appendChild(option);
-  });
-  
-  const operatorSelect = document.createElement('select');
-  operatorSelect.className = 'rule-operator';
-  const operators = [
-    { value: 'contains', label: 'Contains' },
-    { value: 'equals', label: 'Equals' },
-    { value: 'starts', label: 'Starts With' },
-    { value: 'ends', label: 'Ends With' },
-    { value: 'greater', label: 'Greater Than' },
-    { value: 'less', label: 'Less Than' },
-    { value: 'not_empty', label: 'Not Empty' },
-    { value: 'empty', label: 'Is Empty' }
-  ];
-  
-  operators.forEach(op => {
-    const option = document.createElement('option');
-    option.value = op.value;
-    option.textContent = op.label;
-    operatorSelect.appendChild(option);
-  });
-  
-  const valueInput = document.createElement('input');
-  valueInput.type = 'text';
-  valueInput.className = 'rule-value';
-  valueInput.placeholder = 'Filter value...';
-  
-  const removeBtn = document.createElement('button');
-  removeBtn.className = 'btn-icon';
-  removeBtn.innerHTML = `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-  </svg>`;
-  removeBtn.onclick = () => removeFilterRule(ruleId);
-  
-  ruleDiv.appendChild(columnSelect);
-  ruleDiv.appendChild(operatorSelect);
-  ruleDiv.appendChild(valueInput);
-  ruleDiv.appendChild(removeBtn);
-  
-  container.appendChild(ruleDiv);
-}
-
-function removeFilterRule(ruleId) {
-  const rule = document.getElementById(`rule-${ruleId}`);
-  if (rule) {
-    rule.remove();
-  }
-}
-
-function applyAdvancedFilters() {
-  const rules = document.querySelectorAll('.filter-rule');
-  filterRules = [];
-  
-  rules.forEach(rule => {
-    const column = rule.querySelector('.rule-column').value;
-    const operator = rule.querySelector('.rule-operator').value;
-    const value = rule.querySelector('.rule-value').value;
-    
-    if (column && (operator === 'not_empty' || operator === 'empty' || value)) {
-      filterRules.push({ column, operator, value: value.toLowerCase() });
-    }
-  });
-  
-  applyAllFilters();
-  updateActiveFilters();
-}
-
-function applyAllFilters() {
-  const searchValue = document.getElementById('searchInput').value.toLowerCase();
-  
-  filteredData = rawData.filter(row => {
-    // Apply search filter
-    if (searchValue) {
-      const matchesSearch = Object.values(row).some(v => 
-        v?.toLowerCase().includes(searchValue)
-      );
-      if (!matchesSearch) return false;
-    }
-    
-    // Apply advanced filter rules
-    for (let rule of filterRules) {
-      const cellValue = (row[rule.column] || '').toLowerCase();
-      
-      switch (rule.operator) {
-        case 'contains':
-          if (!cellValue.includes(rule.value)) return false;
-          break;
-        case 'equals':
-          if (cellValue !== rule.value) return false;
-          break;
-        case 'starts':
-          if (!cellValue.startsWith(rule.value)) return false;
-          break;
-        case 'ends':
-          if (!cellValue.endsWith(rule.value)) return false;
-          break;
-        case 'greater':
-          if (parseFloat(cellValue) <= parseFloat(rule.value)) return false;
-          break;
-        case 'less':
-          if (parseFloat(cellValue) >= parseFloat(rule.value)) return false;
-          break;
-        case 'not_empty':
-          if (!cellValue) return false;
-          break;
-        case 'empty':
-          if (cellValue) return false;
-          break;
-      }
-    }
-    
-    return true;
-  });
-  
-  // Apply sorting
-  if (sortColumn) {
-    filteredData.sort((a, b) => {
-      const aVal = a[sortColumn] || '';
-      const bVal = b[sortColumn] || '';
-      
-      // Try numeric comparison first
-      const aNum = parseFloat(aVal);
-      const bNum = parseFloat(bVal);
-      
-      if (!isNaN(aNum) && !isNaN(bNum)) {
-        return sortOrder === 'asc' ? aNum - bNum : bNum - aNum;
-      }
-      
-      // Fall back to string comparison
-      const comparison = aVal.localeCompare(bVal);
-      return sortOrder === 'asc' ? comparison : -comparison;
-    });
-  }
-  
-  currentPage = 1;
-  renderTable();
-  updateStats();
-}
-
-function updateActiveFilters() {
-  const container = document.getElementById('activeFiltersContainer');
-  container.innerHTML = '';
-  
-  filterRules.forEach((rule, index) => {
-    const tag = document.createElement('div');
-    tag.className = 'filter-tag';
-    
-    let displayValue = rule.value;
-    if (rule.operator === 'not_empty') displayValue = 'has value';
-    if (rule.operator === 'empty') displayValue = 'is empty';
-    
-    tag.innerHTML = `
-      <strong>${rule.column}</strong> ${rule.operator} "${displayValue}"
-      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" onclick="removeActiveFilter(${index})">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    `;
-    
-    container.appendChild(tag);
-  });
-}
-
-function removeActiveFilter(index) {
-  filterRules.splice(index, 1);
-  applyAllFilters();
-  updateActiveFilters();
-}
-
-function applySorting() {
-  sortColumn = document.getElementById('sortColumn').value;
-  sortOrder = document.getElementById('sortOrder').value;
-  applyAllFilters();
-}
-
-function resetAllFilters() {
-  filteredData = [...rawData];
-  document.getElementById('searchInput').value = '';
-  document.getElementById('sortColumn').value = '';
-  filterRules = [];
-  sortColumn = '';
-  currentPage = 1;
-  
-  // Clear advanced filter rules
-  document.getElementById('filterRulesContainer').innerHTML = '';
-  addFilterRule();
-  
-  updateActiveFilters();
-  renderTable();
-  updateStats();
 }
 
 function renderTable() {
@@ -1107,25 +695,6 @@ function renderTable() {
   headers.forEach(h => {
     const th = document.createElement("th");
     th.textContent = h;
-    th.className = 'sortable';
-    th.onclick = () => {
-      document.getElementById('sortColumn').value = h;
-      if (sortColumn === h) {
-        sortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
-        document.getElementById('sortOrder').value = sortOrder;
-      } else {
-        sortColumn = h;
-        sortOrder = 'asc';
-        document.getElementById('sortColumn').value = h;
-        document.getElementById('sortOrder').value = 'asc';
-      }
-      applySorting();
-    };
-    
-    if (sortColumn === h) {
-      th.classList.add(sortOrder === 'asc' ? 'sort-asc' : 'sort-desc');
-    }
-    
     headRow.appendChild(th);
   });
 
@@ -1166,8 +735,42 @@ function updateStats() {
   document.getElementById("filteredRows").textContent = filteredData.length;
 }
 
+function applyFilter() {
+  const column = document.getElementById("columnFilter").value;
+  const value = document.getElementById("filterValue").value.toLowerCase();
+
+  if (!column || !value) {
+    alert("Please select a column and enter a filter value");
+    return;
+  }
+
+  filteredData = rawData.filter(row =>
+    row[column]?.toLowerCase().includes(value)
+  );
+
+  currentPage = 1;
+  renderTable();
+  updateStats();
+}
+
+function resetFilter() {
+  filteredData = [...rawData];
+  document.getElementById("filterValue").value = "";
+  document.getElementById("searchInput").value = "";
+  document.getElementById("columnFilter").value = "";
+  currentPage = 1;
+  renderTable();
+  updateStats();
+}
+
 document.getElementById("searchInput").addEventListener("input", e => {
-  applyAllFilters();
+  const value = e.target.value.toLowerCase();
+  filteredData = rawData.filter(row =>
+    Object.values(row).some(v => v?.toLowerCase().includes(value))
+  );
+  currentPage = 1;
+  renderTable();
+  updateStats();
 });
 
 function prevPage() {
@@ -1200,3 +803,7 @@ function downloadCSV() {
   a.click();
   URL.revokeObjectURL(url);
 }
+</script>
+
+</body>
+</html>
