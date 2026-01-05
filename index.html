@@ -2,59 +2,793 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>DataVista — CSV Intelligence Platform</title>
+  <title>DataVista Pro — Smart Analytics Platform</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #6366f1;
+      --primary-light: #818cf8;
+      --primary-dark: #4f46e5;
+      --secondary: #ec4899;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --bg-main: #fafbff;
+      --bg-card: #ffffff;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      --border: #e2e8f0;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 12px rgba(99,102,241,0.08);
+      --shadow-lg: 0 12px 40px rgba(99,102,241,0.12);
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #fafbff 0%, #f0f4ff 100%);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .brand-text h1 {
+      font-size: 24px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .brand-text p {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .stat-badge {
+      background: var(--bg-main);
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+    }
+
+    .stat-badge span {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 30px 40px;
+    }
+
+    /* Control Panel */
+    .control-panel {
+      background: var(--bg-card);
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+    }
+
+    .control-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr auto auto;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .input-group {
+      position: relative;
+    }
+
+    .input-group svg {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      color: var(--text-muted);
+    }
+
+    .input-group input,
+    .input-group select {
+      width: 100%;
+      padding: 12px 14px 12px 44px;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      background: var(--bg-main);
+      color: var(--text-primary);
+    }
+
+    .input-group input:focus,
+    .input-group select:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(99,102,241,0.1);
+    }
+
+    .btn {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn-secondary {
+      background: var(--bg-main);
+      color: var(--text-secondary);
+      border: 2px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: white;
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-success {
+      background: linear-gradient(135deg, var(--success), #34d399);
+      color: white;
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-success:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Quick Filters */
+    .quick-filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-chip {
+      padding: 8px 16px;
+      background: var(--bg-main);
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-chip:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: rgba(99,102,241,0.05);
+    }
+
+    .filter-chip.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    /* Table Card */
+    .table-card {
+      background: var(--bg-card);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+    }
+
+    .table-header {
+      padding: 20px 24px;
+      background: linear-gradient(135deg, rgba(99,102,241,0.05), rgba(236,72,153,0.05));
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .table-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .view-options {
+      display: flex;
+      gap: 8px;
+    }
+
+    .view-btn {
+      width: 36px;
+      height: 36px;
+      border: 2px solid var(--border);
+      background: white;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .view-btn svg {
+      width: 18px;
+      height: 18px;
+      color: var(--text-muted);
+    }
+
+    .view-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .view-btn.active svg {
+      color: white;
+    }
+
+    /* Table */
+    .table-container {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead {
+      background: var(--bg-main);
+    }
+
+    th {
+      padding: 16px 20px;
+      text-align: left;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    td {
+      padding: 16px 20px;
+      font-size: 14px;
+      color: var(--text-primary);
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr {
+      transition: all 0.2s ease;
+    }
+
+    tbody tr:hover {
+      background: rgba(99,102,241,0.03);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Pagination */
+    .pagination {
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-main);
+      border-top: 1px solid var(--border);
+    }
+
+    .pagination-info {
+      font-size: 14px;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .pagination-controls {
+      display: flex;
+      gap: 8px;
+    }
+
+    .page-btn {
+      width: 36px;
+      height: 36px;
+      border: 2px solid var(--border);
+      background: white;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .page-btn:hover:not(:disabled) {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: rgba(99,102,241,0.05);
+    }
+
+    .page-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .page-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Loading State */
+    .loading {
+      text-align: center;
+      padding: 60px;
+      color: var(--text-muted);
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid var(--border);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 16px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 60px;
+    }
+
+    .empty-state svg {
+      width: 80px;
+      height: 80px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .empty-state h3 {
+      font-size: 20px;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .empty-state p {
+      color: var(--text-muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .control-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        padding: 16px 20px;
+      }
+      
+      .container {
+        padding: 20px;
+      }
+
+      .header-content {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .table-container {
+        overflow-x: scroll;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="top-header">
-  <div class="brand">
-    <span class="logo">📊</span>
-    <div>
-      <h1>DataVista</h1>
-      <p>Live GitHub Data • Smart Filters • Instant Insights</p>
+<!-- Header -->
+<header class="header">
+  <div class="header-content">
+    <div class="brand">
+      <div class="logo">📊</div>
+      <div class="brand-text">
+        <h1>DataVista Pro</h1>
+        <p>Advanced Analytics & Intelligence Platform</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <div class="stat-badge">
+        <span id="totalRows">0</span> Total Records
+      </div>
+      <div class="stat-badge">
+        <span id="filteredRows">0</span> Filtered
+      </div>
     </div>
   </div>
 </header>
 
-<!-- CONTROL BAR -->
-<section class="command-bar">
-  <div class="control">
-    🔍 <input type="text" id="searchInput" placeholder="Search across all data..." />
+<!-- Main Container -->
+<div class="container">
+  
+  <!-- Control Panel -->
+  <div class="control-panel">
+    <div class="control-row">
+      
+      <div class="input-group">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <input type="text" id="searchInput" placeholder="Search across all columns..." />
+      </div>
+
+      <div class="input-group">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+        </svg>
+        <select id="columnFilter">
+          <option value="">Select Column</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
+        </svg>
+        <input type="text" id="filterValue" placeholder="Filter value..." />
+      </div>
+
+      <button class="btn btn-primary" onclick="applyFilter()">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        Apply
+      </button>
+
+      <button class="btn btn-secondary" onclick="resetFilter()">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+        </svg>
+        Reset
+      </button>
+
+    </div>
+
+    <div class="quick-filters" id="quickFilters"></div>
   </div>
 
-  <div class="control">
-    🧩 <select id="columnFilter"></select>
+  <!-- Table Card -->
+  <div class="table-card">
+    <div class="table-header">
+      <div class="table-title">Data Explorer</div>
+      <div class="view-options">
+        <button class="btn btn-success" onclick="downloadCSV()">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          Export CSV
+        </button>
+      </div>
+    </div>
+
+    <div class="table-container">
+      <div id="loadingState" class="loading">
+        <div class="spinner"></div>
+        <p>Loading data from GitHub...</p>
+      </div>
+      <table id="dataTable" style="display: none;"></table>
+      <div id="emptyState" class="empty-state" style="display: none;">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+        </svg>
+        <h3>No results found</h3>
+        <p>Try adjusting your filters or search terms</p>
+      </div>
+    </div>
+
+    <div class="pagination" id="paginationSection" style="display: none;">
+      <div class="pagination-info" id="pageInfo"></div>
+      <div class="pagination-controls">
+        <button class="page-btn" onclick="prevPage()" id="prevBtn">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button class="page-btn" onclick="nextPage()" id="nextBtn">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </div>
   </div>
 
-  <div class="control">
-    🎯 <input type="text" id="filterValue" placeholder="Filter value" />
-  </div>
-
-  <button class="btn primary" onclick="applyFilter()">Apply</button>
-  <button class="btn ghost" onclick="resetFilter()">Reset</button>
-  <button class="btn success" onclick="downloadCSV()">⬇ Export CSV</button>
-</section>
-
-<!-- TABLE -->
-<section class="data-section">
-  <table id="dataTable"></table>
-</section>
-
-<!-- PAGINATION -->
-<div class="pagination">
-  <button onclick="prevPage()">⟨</button>
-  <span id="pageInfo"></span>
-  <button onclick="nextPage()">⟩</button>
 </div>
 
-<!-- FOOTER -->
-<footer class="footer">
-  © 2026 DataVista Analytics • Internal Data Platform
-</footer>
+<script>
+const CSV_URL = "https://raw.githubusercontent.com/projectquicksilver/SML-Farmer-Validation-Data/main/data.csv";
 
-<script src="script.js"></script>
+let rawData = [];
+let filteredData = [];
+let headers = [];
+let currentPage = 1;
+const rowsPerPage = 15;
+
+// Fetch and load CSV
+fetch(CSV_URL)
+  .then(res => res.text())
+  .then(text => {
+    parseCSV(text);
+    initFilterOptions();
+    renderTable();
+    updateStats();
+    document.getElementById('loadingState').style.display = 'none';
+    document.getElementById('dataTable').style.display = 'table';
+    document.getElementById('paginationSection').style.display = 'flex';
+  })
+  .catch(err => {
+    document.getElementById('loadingState').innerHTML = `
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:60px;height:60px;margin:0 auto 16px;color:#ef4444;">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <h3 style="color:#ef4444;margin-bottom:8px;">Failed to load data</h3>
+      <p>Please check the CSV URL or try again later</p>
+    `;
+  });
+
+function parseCSV(text) {
+  const rows = text.trim().split("\n").map(row => row.split(","));
+  headers = rows.shift().map(h => h.trim());
+  rawData = rows.map(row => {
+    let obj = {};
+    headers.forEach((h, i) => obj[h] = row[i] ? row[i].trim() : "");
+    return obj;
+  });
+  filteredData = [...rawData];
+}
+
+function initFilterOptions() {
+  const select = document.getElementById("columnFilter");
+  headers.forEach(h => {
+    const option = document.createElement("option");
+    option.value = h;
+    option.textContent = h;
+    select.appendChild(option);
+  });
+}
+
+function renderTable() {
+  const table = document.getElementById("dataTable");
+  const emptyState = document.getElementById("emptyState");
+  
+  if (filteredData.length === 0) {
+    table.style.display = 'none';
+    emptyState.style.display = 'block';
+    document.getElementById('paginationSection').style.display = 'none';
+    return;
+  }
+
+  table.style.display = 'table';
+  emptyState.style.display = 'none';
+  document.getElementById('paginationSection').style.display = 'flex';
+  
+  table.innerHTML = "";
+
+  const start = (currentPage - 1) * rowsPerPage;
+  const end = start + rowsPerPage;
+  const pageData = filteredData.slice(start, end);
+
+  const thead = document.createElement("thead");
+  const headRow = document.createElement("tr");
+
+  headers.forEach(h => {
+    const th = document.createElement("th");
+    th.textContent = h;
+    headRow.appendChild(th);
+  });
+
+  thead.appendChild(headRow);
+  table.appendChild(thead);
+
+  const tbody = document.createElement("tbody");
+
+  pageData.forEach(row => {
+    const tr = document.createElement("tr");
+    headers.forEach(h => {
+      const td = document.createElement("td");
+      td.textContent = row[h] || "—";
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+
+  table.appendChild(tbody);
+
+  updatePagination();
+}
+
+function updatePagination() {
+  const totalPages = Math.ceil(filteredData.length / rowsPerPage);
+  const start = (currentPage - 1) * rowsPerPage + 1;
+  const end = Math.min(currentPage * rowsPerPage, filteredData.length);
+  
+  document.getElementById("pageInfo").textContent = 
+    `Showing ${start}-${end} of ${filteredData.length} records`;
+  
+  document.getElementById("prevBtn").disabled = currentPage === 1;
+  document.getElementById("nextBtn").disabled = currentPage === totalPages;
+}
+
+function updateStats() {
+  document.getElementById("totalRows").textContent = rawData.length;
+  document.getElementById("filteredRows").textContent = filteredData.length;
+}
+
+function applyFilter() {
+  const column = document.getElementById("columnFilter").value;
+  const value = document.getElementById("filterValue").value.toLowerCase();
+
+  if (!column || !value) {
+    alert("Please select a column and enter a filter value");
+    return;
+  }
+
+  filteredData = rawData.filter(row =>
+    row[column]?.toLowerCase().includes(value)
+  );
+
+  currentPage = 1;
+  renderTable();
+  updateStats();
+}
+
+function resetFilter() {
+  filteredData = [...rawData];
+  document.getElementById("filterValue").value = "";
+  document.getElementById("searchInput").value = "";
+  document.getElementById("columnFilter").value = "";
+  currentPage = 1;
+  renderTable();
+  updateStats();
+}
+
+document.getElementById("searchInput").addEventListener("input", e => {
+  const value = e.target.value.toLowerCase();
+  filteredData = rawData.filter(row =>
+    Object.values(row).some(v => v?.toLowerCase().includes(value))
+  );
+  currentPage = 1;
+  renderTable();
+  updateStats();
+});
+
+function prevPage() {
+  if (currentPage > 1) {
+    currentPage--;
+    renderTable();
+  }
+}
+
+function nextPage() {
+  const totalPages = Math.ceil(filteredData.length / rowsPerPage);
+  if (currentPage < totalPages) {
+    currentPage++;
+    renderTable();
+  }
+}
+
+function downloadCSV() {
+  let csv = headers.join(",") + "\n";
+  filteredData.forEach(row => {
+    csv += headers.map(h => `"${row[h] || ""}"`).join(",") + "\n";
+  });
+
+  const blob = new Blob([csv], { type: "text/csv" });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `datavista_export_${new Date().toISOString().split('T')[0]}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+</script>
+
 </body>
 </html>
