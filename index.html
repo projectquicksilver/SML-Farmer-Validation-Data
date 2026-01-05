@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CSV Analytics Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <h1>📊 CSV Data Explorer</h1>
+  <p>Live data from GitHub • Filter • Search • Download</p>
+</header>
+
+<section class="controls">
+  <input type="text" id="searchInput" placeholder="🔍 Search data..." />
+  <select id="columnFilter"></select>
+  <input type="text" id="filterValue" placeholder="Filter value" />
+  <button onclick="applyFilter()">Apply Filter</button>
+  <button onclick="resetFilter()">Reset</button>
+  <button onclick="downloadCSV()">⬇ Download CSV</button>
+</section>
+
+<section class="table-container">
+  <table id="dataTable"></table>
+</section>
+
+<div class="pagination">
+  <button onclick="prevPage()">⬅</button>
+  <span id="pageInfo"></span>
+  <button onclick="nextPage()">➡</button>
+</div>
+
+<footer>
+  Built with ❤️ using HTML • CSS • JavaScript
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
