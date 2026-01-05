@@ -2,38 +2,57 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>CSV Analytics Dashboard</title>
+  <title>DataVista — CSV Intelligence Platform</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<header>
-  <h1>📊 CSV Data Explorer</h1>
-  <p>Live data from GitHub • Filter • Search • Download</p>
+<!-- HEADER -->
+<header class="top-header">
+  <div class="brand">
+    <span class="logo">📊</span>
+    <div>
+      <h1>DataVista</h1>
+      <p>Live GitHub Data • Smart Filters • Instant Insights</p>
+    </div>
+  </div>
 </header>
 
-<section class="controls">
-  <input type="text" id="searchInput" placeholder="🔍 Search data..." />
-  <select id="columnFilter"></select>
-  <input type="text" id="filterValue" placeholder="Filter value" />
-  <button onclick="applyFilter()">Apply Filter</button>
-  <button onclick="resetFilter()">Reset</button>
-  <button onclick="downloadCSV()">⬇ Download CSV</button>
+<!-- CONTROL BAR -->
+<section class="command-bar">
+  <div class="control">
+    🔍 <input type="text" id="searchInput" placeholder="Search across all data..." />
+  </div>
+
+  <div class="control">
+    🧩 <select id="columnFilter"></select>
+  </div>
+
+  <div class="control">
+    🎯 <input type="text" id="filterValue" placeholder="Filter value" />
+  </div>
+
+  <button class="btn primary" onclick="applyFilter()">Apply</button>
+  <button class="btn ghost" onclick="resetFilter()">Reset</button>
+  <button class="btn success" onclick="downloadCSV()">⬇ Export CSV</button>
 </section>
 
-<section class="table-container">
+<!-- TABLE -->
+<section class="data-section">
   <table id="dataTable"></table>
 </section>
 
+<!-- PAGINATION -->
 <div class="pagination">
-  <button onclick="prevPage()">⬅</button>
+  <button onclick="prevPage()">⟨</button>
   <span id="pageInfo"></span>
-  <button onclick="nextPage()">➡</button>
+  <button onclick="nextPage()">⟩</button>
 </div>
 
-<footer>
-  Built with ❤️ using HTML • CSS • JavaScript
+<!-- FOOTER -->
+<footer class="footer">
+  © 2026 DataVista Analytics • Internal Data Platform
 </footer>
 
 <script src="script.js"></script>
