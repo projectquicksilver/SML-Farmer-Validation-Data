@@ -1,106 +1,171 @@
+:root {
+  --bg-dark: #0b1020;
+  --glass: rgba(255, 255, 255, 0.08);
+  --accent: #4facfe;
+  --accent-2: #00f2fe;
+  --text-light: #e6eaf2;
+  --muted: #9aa4bf;
+}
+
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", system-ui, sans-serif;
 }
 
 body {
-  background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
-  color: #fff;
+  margin: 0;
+  background: radial-gradient(circle at top, #16213e, #0b1020);
+  color: var(--text-light);
   min-height: 100vh;
 }
 
-header {
-  padding: 20px;
-  text-align: center;
+/* HEADER */
+.top-header {
+  padding: 20px 30px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
-header h1 {
+.brand {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.logo {
   font-size: 2.2rem;
 }
 
-.controls {
+.brand h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.brand p {
+  margin: 2px 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* COMMAND BAR */
+.command-bar {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  padding: 15px;
-  justify-content: center;
-  background: rgba(255,255,255,0.08);
+  gap: 12px;
+  padding: 18px 30px;
+  background: var(--glass);
+  backdrop-filter: blur(12px);
 }
 
-.controls input, .controls select, .controls button {
-  padding: 10px;
-  border-radius: 6px;
+.control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.06);
+  padding: 10px 12px;
+  border-radius: 10px;
+}
+
+.control input,
+.control select {
+  background: transparent;
   border: none;
   outline: none;
+  color: var(--text-light);
+  min-width: 160px;
 }
 
-.controls input, .controls select {
-  min-width: 180px;
-}
-
-.controls button {
-  background: #00c6ff;
+.control select option {
   color: #000;
-  font-weight: bold;
+}
+
+/* BUTTONS */
+.btn {
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
   cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
 }
 
-.controls button:hover {
-  background: #00f2fe;
+.btn.primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #000;
 }
 
-.table-container {
-  padding: 20px;
+.btn.success {
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+  color: #000;
+}
+
+.btn.ghost {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.25);
+  color: var(--text-light);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+/* TABLE */
+.data-section {
+  padding: 20px 30px;
   overflow-x: auto;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  background: #ffffff;
+  background: rgba(255,255,255,0.95);
   color: #000;
-  border-radius: 8px;
+  border-radius: 14px;
   overflow: hidden;
 }
 
-th, td {
-  padding: 12px;
-  border-bottom: 1px solid #ddd;
-  text-align: left;
-}
-
 th {
-  background: #2c5364;
+  background: #101828;
   color: #fff;
-  position: sticky;
-  top: 0;
+  padding: 14px;
+  text-align: left;
+  font-size: 0.85rem;
+  text-transform: uppercase;
 }
 
-tr:hover {
-  background: #f2f2f2;
+td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9rem;
 }
 
+tr:hover td {
+  background: #f4f7ff;
+}
+
+/* PAGINATION */
 .pagination {
   display: flex;
   justify-content: center;
-  gap: 15px;
-  padding: 15px;
+  align-items: center;
+  gap: 14px;
+  padding: 20px;
 }
 
 .pagination button {
-  padding: 8px 15px;
-  border-radius: 6px;
-  border: none;
+  background: var(--glass);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--text-light);
+  padding: 8px 14px;
+  border-radius: 8px;
   cursor: pointer;
-  background: #00c6ff;
-  font-weight: bold;
 }
 
-footer {
+/* FOOTER */
+.footer {
   text-align: center;
-  padding: 15px;
-  font-size: 0.9rem;
-  opacity: 0.7;
+  padding: 16px;
+  font-size: 0.8rem;
+  color: var(--muted);
+  border-top: 1px solid rgba(255,255,255,0.08);
 }
